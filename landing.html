@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <style> html, body {height: 100%;}</style>
+    <link rel="stylesheet" href="./landing.css">
 </head>
 <body class="has-background-grey-darker">
+
     <section class="section">
+
         <div class="container">
             <div class="columns is-vcentered is-centered">
                 <div class="column is-narrow">
@@ -16,7 +18,7 @@
                 </div>
             </div>
             <div class="columns is-vcentered is-centered">
-                <div class="column is-narrow">
+                <div class="column is-flex is-justify-content-center"> <!--Flexbox used to keep structure on all device sizes-->
                     <img src="https://via.placeholder.com/300" alt="Placeholder image">
                 </div>
             </div>
@@ -30,10 +32,13 @@
             </div>
         </div>
     </section>
+    
 <footer class="footer has-background-grey-darker has-text-white">
-    <div class="content has-text-centered">
+    <div class="content has-text-centered is-size-4">
         <p>Data provided by the <a href="https://www.gamerpower.com/api-read">GamerPower API </a>and <a href="https://apidocs.cheapshark.com/">CheapShark API</a>.</p>
     </div>
+    
 </footer>    
+
 </body>
 </html>
