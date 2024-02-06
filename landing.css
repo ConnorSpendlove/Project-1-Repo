@@ -1,0 +1,28 @@
+/* Copyright (c) 2022 Ksenia Kondrashova (https://codepen.io/ksenia-k/pen/jXbWaJ)*/
+html, body {height: 100%;}
+
+body {
+    background-image: url(./assets/images/wavyBackground.svg);
+    background-repeat: no-repeat;
+    background-size: cover; /*makes svg cover the whole body*/
+    background-blend-mode: overlay; /*blends the svg with the background for a lower opacity effect*/
+        height: auto;
+    
+}
+/* https://bgjar.com/ */
+footer {
+    background-image: url(./assets/images/Colored\Shapes.svg);
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    background-blend-mode: overlay;
+        height: auto;
+    
+}
+
+/* Responsive Design for Ipad/Devices with larger px heights */
+@media (height >= 730px) {
+    footer {
+       height: 100vh;
+       
+    }
+}
