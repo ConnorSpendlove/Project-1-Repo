@@ -1,28 +1,90 @@
 /* Copyright (c) 2022 Ksenia Kondrashova (https://codepen.io/ksenia-k/pen/jXbWaJ)*/
-html, body {height: 100%;}
+html {
+    height:100%
+}
 
 body {
     background-image: url(./assets/images/wavyBackground.svg);
     background-repeat: no-repeat;
     background-size: cover; /*makes svg cover the whole body*/
     background-blend-mode: overlay; /*blends the svg with the background for a lower opacity effect*/
-        height: auto;
+    min-height: 100vh;
+    position: relative;
+    width: 100vw;
     
 }
+
+#content-wrap {
+    padding-bottom: 4rem;
+}
+
+#content-wrap h1{
+    font-size: 40px
+}
+
+/* shrinks h1 text depending on screen width */
+@media (width <= 550px) {
+    #content-wrap h1{
+        font-size: 30px
+    }
+
+}
+
+#game-image {
+    height:300px;
+    width:500px;
+    padding: 3px;
+    background-color: rgb(55, 71, 160);
+}
+
+/* shrinks image depending on screen width */
+@media (width <= 550px) {
+    #game-image {
+        height: 200px;
+        width: 330px;
+    }
+
+}
+
+@media (width <= 400px) {
+    #game-image {
+        height: 150px;
+        width: 250px;
+    }
+
+}
+
+/* slight ease-in-out effect when hovering on links */
+a:hover {
+    color: rgb(147, 212, 172);
+    transition: ease-in-out 0.2s;
+
+}
+
 /* https://bgjar.com/ */
 footer {
     background-image: url(./assets/images/Colored\ Shapes.svg);
     background-repeat: no-repeat; 
     background-size: cover; 
     background-blend-mode: overlay;
-        height: auto;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 4rem;  
     
 }
 
-/* Responsive Design for Ipad/Devices with larger px heights */
-@media (height >= 730px) {
-    footer {
-       height: 100vh;
-       
+/* shrinks footer text size depending on screen width */
+@media (width <= 550px) {
+    footer p{
+        font-size: 15px;
     }
+
+}
+
+@media (width <= 400px) {
+    footer p{
+        font-size: 10px;
+    }
+
 }

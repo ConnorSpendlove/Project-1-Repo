@@ -3,41 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Gaming Deals!</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="./landing.css">
 </head>
 <body class="has-background-grey-darker">
-
-    <section class="section">
-
+    <section class="section" id = "content-wrap">
         <div class="container">
             <div class="columns is-vcentered is-centered">
                 <div class="column is-narrow">
-                    <h1 class="title has-text-centered has-text-grey-lighter is-size-1">Welcome to our Game Deals Website!</h1>
+                    <h1 class="title has-text-centered has-text-grey-lighter">Welcome to our Game Deals Website!</h1>
                 </div>
             </div>
             <div  class="thumbnail columns is-vcentered is-centered">
                 <div class="column is-flex is-justify-content-center"> <!--Flexbox used to keep structure on all device sizes-->
-                    <img id= "game-image"src="https://via.placeholder.com/300" alt="Placeholder image">
+                    <img id= "game-image"src="./assets/images/LandingImage.jpg" alt="Placeholder image">
                 </div>
             </div>
             <div class="columns is-vcentered is-centered">
                 <div class="column is-narrow">
                     <div class="buttons is-centered">
-                        <a href="deals.html" class="button is-link is-large">View Deals</a>
-                        <a href="free.html" class="button is-link is-large">View Free Games</a>
+                        <a href="deals.html" class="button is-link is-large" id = "Dealsbtn">View Deals</a>
+                        <a href="free.html" class="button is-link is-large" id = "Freebtn">View Free Games</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     
-<footer class="footer has-background-grey-darker has-text-white">
-    <div class="content has-text-centered is-size-4">
+<footer class="has-background-grey-darker has-text-white is-flex is-justify-content-center is-align-items-center">
+    <div class="is-size-5">
         <p>Data provided by the <a href="https://www.gamerpower.com/api-read">GamerPower API </a>and <a href="https://apidocs.cheapshark.com/">CheapShark API</a>.</p>
     </div>
-    
 </footer>    
 <script src="./landing.js"></script>
 </body>
