@@ -5,24 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gaming Deals!</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <link rel="stylesheet" href="./landing.css">
+    <link rel="stylesheet" href="./assets/css/landing.css">
 </head>
 <body class="has-background-grey-darker">
     <section class="section" id = "content-wrap">
         <div class="container">
             <div class="columns is-vcentered is-centered">
                 <div class="column is-narrow">
-                    <h1 class="title has-text-centered has-text-grey-lighter">Welcome to our Game Deals Website!</h1>
-                </div>
-            </div>
-            <div  class="thumbnail columns is-vcentered is-centered">
+                    <h1 class="title has-text-centered has-text-grey-lighter">Welcome to our Game Deals Website!<img id="info-modal-trigger" src = "./assets/css/images/icons8-info.svg" alt ="informatio button"></h1>
+                    <!-- Bulma classes for creating a simple modal -->
+                    <div id="info-modal" class="modal info-modal">
+                        <div class="modal-background"></div>
+                        <div class="modal-card">
+                            <header class="modal-card-head">
+                                <p class="modal-card-title">Information</p>
+                                <button class="delete" aria-label="close"></button>
+                            </header>
+                            <section class="modal-card-body">
+                                <!-- the information in the modal card which links to githubs and apis -->
+                                <p>This website pulls data from the <a href="https://www.gamerpower.com/api-read" target = "_blank">GamerPower API </a>and the <a href="https://apidocs.cheapshark.com/" target = "_blank">CheapShark API</a> to display free games & games currently on sale. Click on either button below to view each category.
+                                <p>Created by <a href="https://github.com/JudsonHones" target="_blank" class = "has-text-danger">Hudson Jones</a>, <a href="https://github.com/Tylersanford55" target="_blank" class = "has-text-danger">Tyler Sanford</a>, & <a href = "https://github.com/ConnorSpendlove" target="_blank" class = "has-text-danger">Connor Spendlove</a> with HTML, CSS w/Bulma framework, and JavaScript.</p></p>
+                            </section>
+                        </div>
+                    </div>
+            <div class="thumbnail columns is-vcentered is-centered">
                 <div class="column is-flex is-justify-content-center"> <!--Flexbox used to keep structure on all device sizes-->
-                    <img id= "game-image"src="./assets/images/LandingImage.jpg" alt="Placeholder image">
+                    <img id= "game-image"src="./assets/css/images/LandingImage.jpg" alt="Static image of Steam logo in front of various games">
                 </div>
             </div>
             <div class="columns is-vcentered is-centered">
                 <div class="column is-narrow">
                     <div class="buttons is-centered">
+                        <!-- Main button links -->
                         <a href="deals.html" class="button is-link is-large" id = "Dealsbtn">View Deals</a>
                         <a href="free.html" class="button is-link is-large" id = "Freebtn">View Free Games</a>
                     </div>
@@ -30,12 +44,14 @@
             </div>
         </div>
     </section>
-    
 <footer class="has-background-grey-darker has-text-white is-flex is-justify-content-center is-align-items-center">
     <div class="is-size-5">
-        <p>Data provided by the <a href="https://www.gamerpower.com/api-read">GamerPower API </a>and <a href="https://apidocs.cheapshark.com/">CheapShark API</a>.</p>
+        <p>Data provided by the <a href="https://www.gamerpower.com/api-read" target = "_blank">GamerPower API </a>and <a href="https://apidocs.cheapshark.com/" target="_blank">CheapShark API</a>.</p>
     </div>
 </footer>    
 <script src="./landing.js"></script>
 </body>
 </html>
+
+
+
