@@ -35,3 +35,36 @@ html, body, main {
     width: 100%; /* Makes the image take up the full width of the card */
     height: auto; /* Makes the image's height adjust to maintain its aspect ratio */
 }
+
+.filter-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dropdowns {
+    display: flex;
+    justify-content: center;
+}
+
+/* Styles the dropdowns */
+#type-dropdown, #platform-dropdown {
+    background-color: #3273dc; /* Same as has-background-link */
+    color: white; 
+    border: none;
+    padding: 10px;
+    margin: 10px;
+    font-size: 1.25rem; /* Same as is-size-4 */
+    cursor: pointer;
+}
+
+/* Styles the dropdown options */
+#type-dropdown option, #platform-dropdown option {
+    background-color: #4a4a4a; /* Same as has-background-grey-darker */
+    color: #f5f5f5; /* Same as has-text-grey-lighter */
+}
+
+/* Styles the filter button */
+#filter-button {
+    margin-top: 10px;
+}
