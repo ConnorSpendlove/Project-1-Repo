@@ -25,35 +25,33 @@ async function fetchAndDisplayData() {
             // Create a new div for the game card
             let gameCard = document.createElement('div');
             gameCard.className = 'card';
-
-            // Set the content of the game card
-            gameCard.innerHTML = `
-                <div class="card-image">
-                    <figure class="image is-4by3">
-                        <img src="${data[i].thumbnail}" alt="${data[i].title}">
-                    </figure>
-                </div>
-                <div class="card-content">
-                    <div class="media">
-                        <div class="media-content">
-                            <p class="title is-4">${data[i].title}</p>
-                        </div>
-                    </div>
-                    <div class="content">
-                        ${data[i].description}
-                        <br>
-                        <a href="${data[i].open_giveaway_url}">Get it here</a>
-                    </div>
-                </div>
-            `;
-            container.appendChild(gameCard);
-        }
-        startIndex += numGamesToLoad;
-    } catch (error) {
-        console.error(error);
-    }
-
-    loading = false;
+  // Set the content of the game card
+  gameCard.innerHTML = `
+  <div class="card-image">
+      <figure class="image is-4by3">
+          <img src="${data[i].thumbnail}" alt="${data[i].title}">
+      </figure>
+  </div>
+  <div class="card-content">
+      <div class="media">
+          <div class="media-content">
+              <p class="title is-4">${data[i].title}</p>
+          </div>
+      </div>
+      <div class="content">
+          ${data[i].description}
+          <br>
+          <a href="${data[i].open_giveaway_url}">Get it here</a>
+      </div>
+  </div>
+`;
+container.appendChild(gameCard);
+}
+startIndex += numGamesToLoad;
+} catch (error) {
+console.error(error);
+}
+loading = false;
 }
 
 fetchAndDisplayData();

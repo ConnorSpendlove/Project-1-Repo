@@ -1,0 +1,22 @@
+/* Style for game cards */
+.game-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    height: 100%; /* Ensure all game cards have the same height */
+    box-sizing: border-box;
+}
+
+/* Style for store cards */
+.store-card {
+    margin-bottom: 20px;
+}
+
+/* Grid layout for the store container */
+#storeContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjust minmax values as needed */
+    gap: 20px; /* Adjust the gap between cards */
+}
