@@ -28,16 +28,25 @@ document.addEventListener('DOMContentLoaded', async () => {
                 return;
             }
 
-            // Filter out stores with no deals or isActive is 0
-            const storesWithDeals = storeData.filter(store => storeHasDeals(store));
-            console.log('Stores with deals:', storesWithDeals);
+            // Ensure that storeData is an array before filtering
+            if (Array.isArray(storeData)) {
+                // Filter out stores with no deals or isActive is 0
+                const storesWithDeals = storeData.filter(store => storeHasDeals(store));
+                console.log('Stores with deals:', storesWithDeals);
 
-            // Display the current store
-            displayStore(storesWithDeals[currentStoreIndex]);
+                if (storesWithDeals.length > 0) {
+                    // Display the current store
+                    displayStore(storesWithDeals[currentStoreIndex]);
 
-            // Add event listeners for navigation arrows
-            document.getElementById('nextStore').addEventListener('click', () => navigateStores(1, storesWithDeals));
-            document.getElementById('prevStore').addEventListener('click', () => navigateStores(-1, storesWithDeals));
+                    // Add event listeners for navigation arrows
+                    document.getElementById('nextStore').addEventListener('click', () => navigateStores(1, storesWithDeals));
+                    document.getElementById('prevStore').addEventListener('click', () => navigateStores(-1, storesWithDeals));
+                } else {
+                    console.error('No stores with deals found.');
+                }
+            } else {
+                console.error('Invalid data format. Expected an array.');
+            }
         } catch (error) {
             console.error('Error fetching data:', error);
         }
