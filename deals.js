@@ -93,6 +93,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                         gameCard.innerHTML = `
                             <img src="${deal.thumb}" alt="${deal.title} Thumbnail" class="game-thumb">
+                            <p><strong>${deal.title}</strong></p>
                             <p>Original Price: <del>${deal.normalPrice}</del></p>
                             <p>Sale Price: ${deal.salePrice}</p>
                         `;
