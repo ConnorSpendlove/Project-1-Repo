@@ -29,7 +29,7 @@ function createGameCard(game) {
             <div class="content">
                 ${game.description}
                 <br>
-                <a href="${game.open_giveaway_url}">Get it here</a>
+                <a href="${game.open_giveaway_url}" target = "_blank">Get it here</a>
             </div>
         </div>
     `;
