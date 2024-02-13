@@ -7,7 +7,7 @@ const options = {
     }
 };
 
-// Declare container at the top of your script
+
 const container = document.querySelector('.container');
 
 // Function to create a game card
