@@ -19,11 +19,13 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+
 }
 
 .store-card {
     text-align: center;
     margin: 20px;
+    color: white
 }
 
 .store-banner {
@@ -36,15 +38,25 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    
 }
 
 .game-card {
     width: 18%;
     margin: 10px;
     text-align: center;
+    background-color: black;
+    
+}
+
+.game-card p strong{
+    color:white
 }
 
 .game-thumb {
     max-width: 100%;
     height: auto;
+
 }
+
+
