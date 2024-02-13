@@ -1,27 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Deals of the day!</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="assets/css/style3.css">
     <link rel="stylesheet" href="deals.css"> <!-- Include your custom styles -->
+    
 </head>
+
 <body class="has-background-grey-darker has-text-grey-lighter">
     <header>
-        
-        <div class="">
+        <div>
             <h1 class="has-text-centered is-size-1">Deals of the day!</h1>
-            <nav class="has-text-centered">
-                <a href="landing.html" class="button mt-4 m-2 is-size-4 has-background-link has-text-white">Home</a>
-                <a href="free.html" class="button mt-4 m-2 is-size-4 has-background-link has-text-white">Free Games</a>
-            </nav>
         </div>
+        <nav class="has-text-centered">
+            <a href="landing.html" class="button mt-4 m-2 is-size-4 has-background-link has-text-white">Home</a>
+            <a href="free.html" class="button mt-4 m-2 is-size-4 has-background-link has-text-white">Free Games</a>
+        </nav>
     </header>
     <main class="has-background-grey">
         <h2 class="is-size-4 has-text-centered has-text-grey-lighter mt-3">Look at all of those discounts!</h2>
-        
+
+        <!-- Page navigation buttons at the top -->
+        <div class="buttons is-centered mt-4">
+            <button id="prevStore" class="button is-info">Previous Store</button>
+            <button id="nextStore" class="button is-info">Next Store</button>
+        </div>
+
         <!-- Container for individual store and deal cards -->
         <section class="container has-text-centered md-3 has-text-black" id="storeContainer">
             <!-- Store and deal cards will be dynamically added here -->
@@ -34,4 +42,5 @@
     </footer>
     <script src="deals.js"></script>
 </body>
+
 </html>

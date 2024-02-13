@@ -11,51 +11,66 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     };
 
-    const linkElement = document.createElement('link');
-    linkElement.rel = 'stylesheet';
-    linkElement.href = 'deals.css';
-    document.head.appendChild(linkElement);
+    const storeContainer = document.getElementById('storeContainer');
+    let currentStoreIndex = 0;
+    let storeData;
 
-    let loading = false;
-    let startIndex = 0;
-    const numDealsToLoad = 5;
+    const numDealsToLoad = 15;
     const delayBetweenRequests = 1000;
 
     async function fetchAndDisplayDeals() {
-        if (loading) return;
-        loading = true;
-
         try {
             const storesResponse = await fetch(storesUrl, options);
-            const storeData = await storesResponse.json();
-
-            const storeContainer = document.getElementById('storeContainer');
+            storeData = await storesResponse.json();
 
             if (!storeContainer) {
                 console.error('storeContainer not found!');
                 return;
             }
 
-            storeContainer.innerHTML = '';
+            // Filter out stores with no deals or isActive is 0
+            const storesWithDeals = storeData.filter(store => storeHasDeals(store));
+            console.log('Stores with deals:', storesWithDeals);
 
-            for (const store of storeData) {
-                await new Promise(resolve => setTimeout(resolve, delayBetweenRequests));
-                const dealsResponse = await fetch(`${dealsUrl}?storeID=${store.storeID}`, options);
-                const storeDeals = await dealsResponse.json();
+            // Display the current store
+            displayStore(storesWithDeals[currentStoreIndex]);
 
-                if (storeDeals.length > 0) {
-                    const storeCard = document.createElement('div');
-                    storeCard.className = 'store-card';
+            // Add event listeners for navigation arrows
+            document.getElementById('nextStore').addEventListener('click', () => navigateStores(1, storesWithDeals));
+            document.getElementById('prevStore').addEventListener('click', () => navigateStores(-1, storesWithDeals));
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    }
 
-                    storeCard.innerHTML = `
-                        <img src="${cheapSharkDomain}${store.images.banner || '/img/stores/banners/0.png'}" alt="${store.storeName} Banner" class="store-banner">
-                        <div class="store-deals"></div>
-                    `;
+    // Modify storeHasDeals function to check isActive
+    function storeHasDeals(store) {
+        return store && store.storeID !== undefined && store.isActive === 1;
+    }
 
-                    storeContainer.appendChild(storeCard);
+    function displayStore(store) {
+        // Clear previous content
+        storeContainer.innerHTML = '';
 
-                    const storeDealsContainer = storeCard.querySelector('.store-deals');
+        // Check if the store has deals and isActive is 1
+        if (storeHasDeals(store) && store.images) {
+            // Create store card
+            const storeCard = document.createElement('div');
+            storeCard.className = 'store-card';
 
+            storeCard.innerHTML = `
+                <img src="${cheapSharkDomain}${store.images.banner || '/img/stores/banners/0.png'}" alt="${store.storeName} Banner" class="store-banner">
+                <div class="store-deals"></div>
+            `;
+
+            storeContainer.appendChild(storeCard);
+
+            const storeDealsContainer = storeCard.querySelector('.store-deals');
+
+            // Fetch and display deals for the current store
+            fetch(`${dealsUrl}?storeID=${store.storeID}`, options)
+                .then(response => response.json())
+                .then(storeDeals => {
                     for (let i = 0; i < Math.min(numDealsToLoad, storeDeals.length); i++) {
                         const deal = storeDeals[i];
                         const gameCard = document.createElement('div');
@@ -76,16 +91,18 @@ document.addEventListener('DOMContentLoaded', async () => {
                         gameCard.appendChild(gameLink);
                         storeDealsContainer.appendChild(gameCard);
                     }
-                }
-            }
-        } catch (error) {
-            console.error(error);
+                })
+                .catch(error => console.error('Error fetching store deals:', error));
         }
+    }
 
-        loading = false;
+    function navigateStores(direction, stores) {
+        // Update currentStoreIndex based on the direction
+        currentStoreIndex = (currentStoreIndex + direction + stores.length) % stores.length;
+
+        // Display the new current store
+        displayStore(stores[currentStoreIndex]);
     }
 
     fetchAndDisplayDeals();
-
-    
 });
