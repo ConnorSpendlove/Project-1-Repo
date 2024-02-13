@@ -16,7 +16,35 @@
 
 /* Grid layout for the store container */
 #storeContainer {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjust minmax values as needed */
-    gap: 20px; /* Adjust the gap between cards */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.store-card {
+    text-align: center;
+    margin: 20px;
+}
+
+.store-banner {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.store-deals {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.game-card {
+    width: 18%;
+    margin: 10px;
+    text-align: center;
+}
+
+.game-thumb {
+    max-width: 100%;
+    height: auto;
 }
