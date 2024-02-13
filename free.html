@@ -6,7 +6,6 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel ="stylesheet" href = "assets/css/style3.css">
-    <script src="free.js"></script>
 </head>
 <body class = "has-background-grey-darker has-text-grey-lighter">
     
@@ -21,13 +20,26 @@
     </header>
     <main class = "has-background-grey">
         <h2 class = "is-size-4 has-text-centered has-text-grey-lighter mt-3">Look at all of these free games!</h2>
+        
+        <div class="filter-container">
+            <div class="dropdowns has-text-centered">
+                <select id="type-dropdown">
+                    <option value="" selected disabled>Select Giveaway Type</option>
+                </select>
+            </div>
+            <div class="filter-button">
+                <button id="filter-button" class="button mt-4 m-2 is-size-4 has-background-link has-text-white">Filter</button>
+            </div>
+        </div>
+        
         <section class = "container has-text-centered md-3 has-text-black" id = "main-card" >
         </section>
-    </main>
+    </main>    
     <footer class = " has-background-grey-darker is-flex is-justify-content-center is-align-content-baseline" id = "footer">
         <div class = "has-text-centered is-size-5 ">
             Api Credit: <a href = "https://www.gamerpower.com/api-read">gamerpower.com</a>
         </div>
     </footer>
+    <script src="/free.js"></script>
 </body>
 </html>

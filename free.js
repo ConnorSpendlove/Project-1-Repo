@@ -7,57 +7,92 @@ const options = {
     }
 };
 
-let startIndex = 0;
-const numGamesToLoad = 5;
-let loading = false;
 
-async function fetchAndDisplayData() {
-    loading = true;
-    try {
-        const response = await fetch(url, options);
-        const data = await response.json(); // Parse the response as JSON
+const container = document.querySelector('.container');
 
-        // Get a reference to the card elements
-        const container = document.querySelector('.container');
-
-        // Loop through each item in the data
-        for (let i = startIndex; i < startIndex + numGamesToLoad && i < data.length; i++) {
-            // Create a new div for the game card
-            let gameCard = document.createElement('div');
-            gameCard.className = 'card';
-  // Set the content of the game card
-  gameCard.innerHTML = `
-  <div class="card-image">
-      <figure class="image is-4by3">
-          <img src="${data[i].thumbnail}" alt="${data[i].title}">
-      </figure>
-  </div>
-  <div class="card-content">
-      <div class="media">
-          <div class="media-content">
-              <p class="title is-4">${data[i].title}</p>
-          </div>
-      </div>
-      <div class="content">
-          ${data[i].description}
-          <br>
-          <a href="${data[i].open_giveaway_url}">Get it here</a>
-      </div>
-  </div>
-`;
-container.appendChild(gameCard);
-}
-startIndex += numGamesToLoad;
-} catch (error) {
-console.error(error);
-}
-loading = false;
+// Function to create a game card
+function createGameCard(game) {
+    const gameCard = document.createElement('div');
+    gameCard.className = 'card';
+    gameCard.innerHTML = `
+        <div class="card-image">
+            <figure class="image is-4by3">
+                <img src="${game.thumbnail}" alt="${game.title}">
+            </figure>
+        </div>
+        <div class="card-content">
+            <div class="media">
+                <div class="media-content">
+                    <p class="title is-4">${game.title}</p>
+                </div>
+            </div>
+            <div class="content">
+                ${game.description}
+                <br>
+                <a href="${game.open_giveaway_url}">Get it here</a>
+            </div>
+        </div>
+    `;
+    return gameCard;
 }
 
-fetchAndDisplayData();
+// Function to create dropdown options
+function createDropdownOptions(types, dropdown) {
+    types.forEach(type => {
+        const option = document.createElement('option');
+        option.value = type;
+        option.textContent = type;
+        dropdown.appendChild(option);
+    });
+}
 
-window.addEventListener('scroll', () => {
-    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) { 
-        fetchAndDisplayData();
-    }
-});
+// Fetch the data
+fetch(url, options)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        // Extract the unique types
+        const types = [...new Set(data.map(game => game.type))];
+
+        // Get the type dropdown
+        const typeDropdown = document.getElementById('type-dropdown');
+
+        // Create an option for each type
+        createDropdownOptions(types, typeDropdown);
+
+        // Get the filter button
+        const filterButton = document.getElementById('filter-button');
+
+        // Add event listener to the filter button
+        filterButton.addEventListener('click', () => {
+            // Get the selected type
+            const selectedType = typeDropdown.value;
+
+            // Perform the filtering
+            const filteredData = data.filter(game => game.type === selectedType);
+
+            // Clear the current UI
+            container.innerHTML = '';
+
+            // Create elements for each game
+            filteredData.forEach(game => {
+                const gameCard = createGameCard(game);
+                container.appendChild(gameCard);
+            });
+
+            // Save the filter settings to localStorage
+            localStorage.setItem('selectedType', selectedType);
+        });
+
+        // Load the filter settings from localStorage
+                const savedFilter = localStorage.getItem('selectedType');
+                if (savedFilter) {
+                    typeDropdown.value = savedFilter;
+                    filterButton.click();
+                }
+            }
+        );
