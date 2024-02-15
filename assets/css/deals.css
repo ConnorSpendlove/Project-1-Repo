@@ -42,11 +42,15 @@
 }
 
 .game-card {
-    width: 18%;
-    margin: 10px;
-    text-align: center;
     background-color: black;
-    
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    box-sizing: border-box;
+    display: flex; /* Make this a flex container */
+    flex-direction: column; /* Stack the children vertically */
+    justify-content: space-between; /* Distribute space evenly between the children */
 }
 
 .game-card p strong{
@@ -54,9 +58,10 @@
 }
 
 .game-thumb {
-    max-width: 100%;
-    height: auto;
-
+    width: 120px;
+    height: 45px;
+    margin-bottom: 10px;
+    align-self: center;
 }
 
 
